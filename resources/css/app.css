@@ -135,13 +135,13 @@ html, body{
   }
   
   .carousel-fade .slides .slide-1 {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("../images/shoeboxhero.jpg"); 
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("/storage/images/bg/shoeboxhero.jpg"); 
   }
   .carousel-fade .slides .slide-2 {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("../images/shoeshero.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("/storage/images/bg/shoeshero.jpg");
   }
   .carousel-fade .slides .slide-3 {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("../images/shoewallhero.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)), url("/storage/images/bg/shoewallhero.jpg");
   }
   
   /********************************/

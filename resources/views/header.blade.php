@@ -34,7 +34,7 @@
                 <div class="hero">
 
                     <header>
-                        <img id="logo" src="{{asset('images/TSG_fulllogo_noborder.png')}}">
+                        <img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}">
                     </header>
 
 
@@ -47,9 +47,9 @@
                         <a class="btn" href="#used" id="nav">Used</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
-                                src="{{asset('images/facebooksml.png')}}"></a>
+                                src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
                         <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
-                                src="{{asset('images/instagramsml.png')}}"></a>
+                                src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="hero">
 
 
-                    <header><img id="logo" src="{{asset('images/TSG_fulllogo_noborder.png')}}"></header>
+                    <header><img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}"></header>
                     <div>
                         <a class="btn" href="/" id="nav">Home</a>
                         <a class="btn" href="#apparel" id="nav">Apparel</a>
@@ -70,9 +70,9 @@
                         <a class="btn" href="#used" id="nav">Used</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
-                                src="{{asset('images/facebooksml.png')}}"></a>
+                                src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
                         <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
-                                src="{{asset('images/instagramsml.png')}}"></a>
+                                src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <div class="hero">
 
 
-                    <header><img id="logo" src="{{asset('images/TSG_fulllogo_noborder.png')}}"></header>
+                    <header><img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}"></header>
                     <div> <a class="btn" href="/" id="nav">Home</a>
                         <a class="btn" href="#apparel" id="nav">Apparel</a>
                         <a class="btn" href="#mens" id="nav">Men's</a>
@@ -92,9 +92,9 @@
                         <a class="btn" href="#used" id="nav">Used</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
-                                src="{{asset('images/facebooksml.png')}}"></a>
+                                src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
                         <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
-                                src="{{asset('images/instagramsml.png')}}"></a>
+                                src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
             </div>

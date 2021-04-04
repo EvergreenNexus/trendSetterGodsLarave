@@ -1,17 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/images/facebooksml.png": "/images/facebooksml.png",
-    "/images/instagramsml.png": "/images/instagramsml.png",
-    "/images/shoeboxhero.jpg": "/images/shoeboxhero.jpg",
-    "/images/shoeshero.jpg": "/images/shoeshero.jpg",
-    "/images/shoewallhero.jpg": "/images/shoewallhero.jpg",
-    "/images/shoewallsickhero.jpg": "/images/shoewallsickhero.jpg",
-    "/images/TSG.SVG": "/images/TSG.SVG",
-    "/images/TSG_fulllogo.png": "/images/TSG_fulllogo.png",
-    "/images/TSG_fulllogo_noborder.png": "/images/TSG_fulllogo_noborder.png",
-    "/images/twittersml.png": "/images/twittersml.png",
-    "/images/yeezyhero.jpg": "/images/yeezyhero.jpg",
-    "/images/youtubesml.png": "/images/youtubesml.png",
-    "/music/Mike-Deez-Got-Swag.mp3": "/music/Mike-Deez-Got-Swag.mp3"
+    "/css/app.css": "/css/app.css"
 }

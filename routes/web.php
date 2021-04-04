@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+        return view("index");
+    // $men_products_file = Storage::get("public/products/men/data.json");
+            // $data = json_decode($men_products);
+            // dd($men_products_file);
 });
