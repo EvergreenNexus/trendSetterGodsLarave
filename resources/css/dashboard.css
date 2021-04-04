@@ -1,0 +1,28 @@
+.header{
+    text-align: center;
+}
+
+.aside{
+    width:20%;
+    
+}
+
+.aside h3 {
+    position: relative;
+    top: 50px;
+    transform: translateY(-25px);
+}
+
+.main{
+    width: 80%;
+}
+
+.card {
+    position: relative;
+    right:20%;
+    transform: translateX(20%);
+}
+
+.brand {
+    height:100px;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-        return view("index");
-    // $men_products_file = Storage::get("public/products/men/data.json");
-            // $data = json_decode($men_products);
-            // dd($men_products_file);
-});
+Route::get('/', [ProductController::class,'index']);
+Route::get('/dashboard', [ProductController::class,'dashboard']);
+
