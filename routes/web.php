@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ProductController::class,'index']);
-Route::get('/dashboard', [ProductController::class,'dashboard']);
+Route::post('/product', [ProductController::class,'store']);
+
+Route::get('/dashboard', [DashboardController::class,'index']);
 
