@@ -9,50 +9,64 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    //
-    public function index (){
+    public function index()
+    {
 
-        if(Storage::disk('public')->exists('products.html')){
+        if (Storage::disk('public')->exists('products.html')) {
             return Storage::disk('public')->get('products.html');
         }
 
-        $men_products = Product::where('category','men')->get()->load('variations')->toArray();
-        // $women_products = Product::where('category','women')->get()->load('variations')->toArray();
-        // $youth_products = Product::where('category','youth')->get()->load('variations')->toArray();
-        // $apparel_products = Product::where('category','apparel')->get()->load('variations')->toArray();
-        // $used_products = Product::where('category','used')->get()->load('variations')->toArray();
+        $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
+        $women_products = Product::where('category','women')->get()->load('variations')->toArray();
+        $youth_products = Product::where('category','youth')->get()->load('variations')->toArray();
+        $apparel_products = Product::where('category','apparel')->get()->load('variations')->toArray();
+        $used_products = Product::where('category','used')->get()->load('variations')->toArray();
+
+        $cachedPage = (string) view('index', [
+            'men_products' => $men_products,
+            'women_products' => $women_products,
+            'youth_products' => $youth_products,
+            'used_products' => $used_products,
+            'apparel_products' => $apparel_products,
+            ])->render();
+        File::put(storage_path('/app/public/products.html'), $cachedPage);
 
 
+        // Storage::url('images/air-jordan-3-retro-se-fire-red.jpg');
 
 
-
-        $cachedPage = (string) view('index',['$men_products'=>$men_products ])->render();
-        File::put(storage_path('/app/public/products.html'),$cachedPage);
-        
-
-
-        return $cachedPage;
+        return view('index' , ['men_products'=> $men_products]);
     }
 
-    public function store(Request $request){
-
-        dd('product creation',$request);
-
+    public function store(Request $request)
+    {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-    
 
-        $imageName = time().'.'.$request->image->extension();  
+        $product = new Product;
 
-     
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->size = $request->size;
+        $product->quantity = $request->quantity;
+        $product->category = $request->category;
 
-        $request->image->move(public_path('images'), $imageName);
+        
+        $imageName = $request->image->getClientOriginalName();
+        $path = $request->image->storeAs('/images', $imageName , 'public');
+        $product->image = 'storage/'.$path;
+        // $product = Storage::url('public/images/.air-jordan-3-retro-se-fire-red.jpg');
+        // $product = Storage::url('public')->get('images/air-jordan-3-retro-se-fire-red.jpg');
 
-        return view('dashboard.index')->with('success','product was created successfully');
+        // $product = Storage::disk('public')->get('images/air-jordan-3-retro-se-fire-red.jpg');
+        // dd($path);
+        try {
+            $product->save();
+            return back()->with('success', 'product was created successfully');
+        } catch (\Throwable $th) {
+            return back()->with('failure', 'error while creating a product');
+        }
     }
-    
-  
-
 }

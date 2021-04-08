@@ -31,3 +31,9 @@ ul {
     transform: translateX(20%);
 }
 
+.toast {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
