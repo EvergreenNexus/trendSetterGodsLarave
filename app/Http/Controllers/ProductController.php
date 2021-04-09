@@ -43,14 +43,15 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required',
+            'image' => 'bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'bail|required',
             'price' => 'required',
             'category' => 'required',
-            'size' => 'required',
-            'quantity' => 'required'
+            'size' => 'required|array|min:1',
+            'quantity' => 'required|array|min:1',
+            'quantity.*' =>'integer'
         ]);
 
         $product = new Product;
