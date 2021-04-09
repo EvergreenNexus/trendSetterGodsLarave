@@ -112,7 +112,7 @@
             addVariationButton.click(() => {
                 let removeVariationButton = `
                                             <span  class="remove__variation row">
-                                                <div class="form-group col">
+                                                <div class="form-group col-2">
                                                     <label for="size">Size</label>
                                                     <select class="form-control" name="size[]" id="size">
                                                         <option>8</option>
@@ -124,15 +124,15 @@
                                                         <option>11</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col-3">
                                                     <label for="quantity">quantity</label>
-                                                    <input name="quantity[]" placeholder="enter product quentity" type="text" class="form-control"
+                                                    <input name="quantity[]" placeholder="product quantity..." type="text" class="form-control"
                                                         id="quantity">
                                                 </div>
-                                                <div class="form-group col d-flex align-items-end remove__variation__button" >
+                                                <div class="form-group col-1 d-flex align-items-end" >
                                                     <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
                                                         xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
-                                                        class=" bi bi-dash-square remove__variation" viewBox="0 0 16 16">
+                                                        class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
                                                         <path
                                                             d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                                                         <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
@@ -144,7 +144,7 @@
             })
 
             $('#variationsContainer').on('click', '.remove__variation__button', function() {
-                this.closest('.remove__variation').remove();
+                $(this.closest('.remove__variation')).remove();
             })
 
         });
