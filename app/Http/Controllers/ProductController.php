@@ -35,7 +35,6 @@ class ProductController extends Controller
 
         File::put(storage_path('/app/public/products.html'), $cachedPage);
 
-
         // Storage::url('images/air-jordan-3-retro-se-fire-red.jpg');
 
 
@@ -43,7 +42,7 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
         $request->validate([
             'image' => 'bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'bail|required',
@@ -51,8 +50,9 @@ class ProductController extends Controller
             'category' => 'required',
             'size' => 'required|array|min:1',
             'quantity' => 'required|array|min:1',
-            'quantity.*' =>'integer'
+            'quantity.*' => 'integer'
         ]);
+
 
         $product = new Product;
         $sizes = $request->size;
@@ -82,23 +82,30 @@ class ProductController extends Controller
         array_shift($quantities);
         $variations_quantities = $quantities;
 
-        if (
-            sizeof($variations_sizes) != 0 &&  sizeof($variations_quantities) != 0
-            && sizeof($variations_sizes) == sizeof($variations_quantities)
-            && isset($variations_quantities) && isset($variations_sizes)
+        if ((sizeof($variations_sizes) == 0 ||  sizeof($variations_quantities) == 0)
+            && (sizeof($variations_sizes) == sizeof($variations_quantities))
         ) {
-            foreach ($variations_sizes as $index => $size) {
-                array_push($product_variations, ['size' => $size, 'quantity' => $variations_quantities[$index], 'product_id' => $product->id]);
-            }
+            DB::commit();
+            return back()->with('success', 'product was created successfully');
+        }
+
+        if (sizeof($variations_sizes) != sizeof($variations_quantities)) {
+            DB::rollBack();
+            return back()->with('failure', 'error while creating a product');
+        }
+
+        foreach ($variations_sizes as $index => $size) {
+            array_push($product_variations, ['size' => $size, 'quantity' => $variations_quantities[$index], 'product_id' => $product->id]);
+        }
+
+        if (sizeof($product_variations) == 0) {
+            DB::rollBack();
+            return back()->with('failure', 'error while creating a product');
         }
 
         try {
-            if (isset($product_variations) && sizeof($product_variations) != 0) {
-                foreach ($product_variations as $index => $variation) {
-                    Variation::create($variation);
-                }
-            } else {
-                throw new Exception('product variation was not created');
+            foreach ($product_variations as $index => $variation) {
+                Variation::create($variation);
             }
             DB::commit();
         } catch (\Throwable $th) {
@@ -106,7 +113,6 @@ class ProductController extends Controller
             return back()->with('failure', 'error while creating a product');
         }
 
-        // Trigger Home page Caching and redirect . 
         return back()->with('success', 'product was created successfully');
     }
 }
