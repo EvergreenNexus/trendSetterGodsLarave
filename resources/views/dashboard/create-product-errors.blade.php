@@ -1,4 +1,4 @@
-{{-- Success Toast --}}
+{{-- Product creation Success Toast --}}
 @if (session('success'))
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
         <div class="toast-header text-white bg-success">
@@ -16,6 +16,24 @@
             <p>
                 Please update website ... !
             </p>
+        </div>
+    </div>
+@endif
+{{-- Website Update / generate cached homepage --}}
+@if (session('updated'))
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header text-white bg-success">
+            <strong class="mr-auto">Product Created</strong>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <small>1 sec ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            <p>Website is Updated ... !</p>
         </div>
     </div>
 @endif

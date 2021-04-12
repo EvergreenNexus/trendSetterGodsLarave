@@ -115,4 +115,35 @@ class ProductController extends Controller
 
         return back()->with('success', 'product was created successfully');
     }
+
+    public function cacheProducts()
+    {
+        $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
+        $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
+        $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
+        $apparel_products = Product::where('category', 'apparel')->get()->load('variations')->toArray();
+        $used_products = Product::where('category', 'used')->get()->load('variations')->toArray();
+
+        try {
+
+            $cachedPage = (string) view('index', [
+                'men_products' => $men_products,
+                'women_products' => $women_products,
+                'youth_products' => $youth_products,
+                'used_products' => $used_products,
+                'apparel_products' => $apparel_products,
+            ])->render();
+        } catch (\Throwable $th) {
+            return back()->with('failure', 'unable to generate home page');
+        }
+        try {
+            File::put(storage_path('/app/public/products.html'), $cachedPage);
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('failure', 'unable to store cached page');
+        }
+
+        return back()->with('updated', 'products is updated');
+    }
 }
