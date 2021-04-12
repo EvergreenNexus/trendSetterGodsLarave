@@ -49,7 +49,7 @@
                 <li>
                     <form role="form" method="POST" action="{{ url('/cache-products') }}">
                         @csrf
-                        <button type="button" class="btn btn-primary">update website</button>
+                        <button type="submit" class="btn btn-primary">update website</button>
                     </form>
                 </li>
             </ul>
