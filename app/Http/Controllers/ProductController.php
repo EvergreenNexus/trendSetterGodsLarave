@@ -118,6 +118,8 @@ class ProductController extends Controller
 
     public function cacheProducts()
     {
+        // maybe check if the cached version is after latest product insert ?
+
         $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
         $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
         $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
