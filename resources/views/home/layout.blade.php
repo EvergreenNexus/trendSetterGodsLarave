@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    @include('header')
+    @include('home.header')
     @yield('content')
 </body>
 

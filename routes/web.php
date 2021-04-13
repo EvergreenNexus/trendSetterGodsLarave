@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ProductController::class, 'index']);
+Route::get('/men', [ProductController::class, 'menShoes']);
+Route::get('/women', [ProductController::class, 'womenShoes']);
+Route::get('/youth', [ProductController::class, 'youthShoes']);
+Route::get('/apparel', [ProductController::class, 'apparels']);
+Route::get('/used', [ProductController::class, 'usedShoes']);
+
 Route::post('/product', [ProductController::class, 'store']);
 Route::post('/cache-products', [ProductController::class, 'cacheProducts']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/create-product', [DashboardController::class, 'index']);

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('home.layout')
 {{-- <img src="{{asset('storage/images/air-jordan-7-retro-greater-china.jpg')}}"/> --}}
 
 @section('content')
@@ -7,22 +7,22 @@
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
             Men's Section
         </h4>
-        @include('sections.men')
+        @include('home.sections.men')
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
             Womens's Section
         </h4>
-        @include('sections.women')
+        @include('home.sections.women')
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
             Youth's Section
         </h4>
-        @include('sections.youth')
+        @include('home.sections.youth')
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
             Apparels's Section
         </h4>
-        @include('sections.apparel')
+        @include('home.sections.apparel')
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
             Used Section
         </h4>
-        @include('sections.used')
+        @include('home.sections.used')
     </div>
 @endsection

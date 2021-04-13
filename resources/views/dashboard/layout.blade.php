@@ -29,36 +29,46 @@
         <img class="brand" src="{{ asset('storage/images/logos/TSG_fulllogo_noborder.png') }}" />
     </header>
 
-    <main class="container-fluid w-100 main d-flex justify-content-between px-0">
-        <aside class="aside bg-dark  text-white">
-            <ul class="px-0 text-center ">
+    <main class="container-fluid w-100 main d-flex justify-content-between align-items-stretch px-0 ">
+        <aside class=" aside bg-dark  text-white ">
+            <span class="pb-2 inner-aside">
+            <ul class="nav flex-column text-center">
                 <h3 class="">TrendSetterGods</h3>
                 <hr class="bg-light" />
-                {{-- <li><p>products list</p></li> --}}
-                <li class="">
-                    <P> <span class="mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                <path
-                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
-                        </span>create product</P>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Men Shoes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Women Shoes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Youth Shoes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Apparel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Used</a>
                 </li>
             </ul>
-            <ul class="px-0 text-center">
-                <li>
+            <ul class="nav flex-column">
+                <li class="my-2">
+                    <a class="btn btn-primary btn-block" href="#" role="button">create product</a>
+                </li>
+                <li class="my-2">
                     <form role="form" method="POST" action="{{ url('/cache-products') }}">
                         @csrf
-                        <button type="submit" class="btn btn-primary">update website</button>
+                        <button type="submit" class="btn btn-secondary btn-block">update website</button>
                     </form>
                 </li>
             </ul>
-            <ul class="px-0 text-center">
-                <li class="">logout</li>
+            <ul class="nav flex-column ">
+                <a class="btn btn-danger btn-block" href="#" role="button">logout</a>
             </ul>
+        </span>
+
         </aside>
         <div class="mt-3 content ">
-
             @yield('content')
         </div>
     </main>

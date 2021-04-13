@@ -19,9 +19,6 @@
                         </label>
                     </div>
                 </div>
-
-
-
                 <div class="form-group row ">
                     <span class="col-5">
                         <label for="name">Product Name</label>
@@ -80,7 +77,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-2 ">Create Product</button>
                 <button type="submit" id="clear" class="btn btn-danger mt-2">Clear</button>
-
             </form>
         </div>
 

@@ -8,12 +8,14 @@
 
 .aside{
     width:245px;
-    height: calc(100% - 100px);
-    position: fixed;
     top: 100px;
+       
+}
+.inner-aside {
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
 
 ul {
@@ -22,7 +24,7 @@ ul {
 
 .content{
     width: 75%;
-    margin-left:calc(290px);
+    margin:0 auto;
 }
 
 .card {
@@ -40,3 +42,4 @@ ul {
 .plus{
     font-size: 1em;
 }
+

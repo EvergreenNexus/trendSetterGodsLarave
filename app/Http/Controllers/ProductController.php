@@ -25,7 +25,7 @@ class ProductController extends Controller
         $apparel_products = Product::where('category', 'apparel')->get()->load('variations')->toArray();
         $used_products = Product::where('category', 'used')->get()->load('variations')->toArray();
 
-        $cachedPage = (string) view('index', [
+        $cachedPage = (string) view('home.index', [
             'men_products' => $men_products,
             'women_products' => $women_products,
             'youth_products' => $youth_products,
@@ -38,7 +38,10 @@ class ProductController extends Controller
         // Storage::url('images/air-jordan-3-retro-se-fire-red.jpg');
 
 
-        return view('index', ['men_products' => $men_products]);
+        return view('home.index', [
+            'men_products' => $men_products, 'women_products' => $women_products,
+            'youth_products' => $youth_products, 'apparel_products' => $apparel_products, 'used_products' => $used_products
+        ]);
     }
 
     public function store(Request $request)
@@ -128,7 +131,7 @@ class ProductController extends Controller
 
         try {
 
-            $cachedPage = (string) view('index', [
+            $cachedPage = (string) view('home.index', [
                 'men_products' => $men_products,
                 'women_products' => $women_products,
                 'youth_products' => $youth_products,
