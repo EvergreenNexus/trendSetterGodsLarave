@@ -36,13 +36,8 @@
                 <div class="form-group row">
                     <span class="col-5">
                         <label for="categories">Categories</label>
-                        <select required name="category" class="form-control" id="categories">
+                        <select required name="category" class="form-control categories">
                             <option disabled selected value> -- select a category -- </option>
-                            <option>men</option>
-                            <option>women</option>
-                            <option>youth</option>
-                            <option>apparel</option>
-                            <option>used</option>
                         </select>
                     </span>
                 </div>
@@ -98,27 +93,42 @@
                 $('.form').trigger('reset');
             })
 
-            // SIZES 
+            // Categories
+            let shoesCategories = `
+                                        <option disabled selected value> -- Select a Category -- </option>
+                                        <option >men</option>
+                                        <option >women</option>
+                                        <option >youth</option>
+                                        <option >used</option>
+                                        `;
 
+            let apparelsCategory = `<option >apparel</option>`;
+
+            $('.categories').html(shoesCategories);
+
+
+            // SIZES 
             let shoesSizes = "<option disabled selected value> -- size -- </option>"
             for (let i = 1; i < 16.5; i += (1 / 2)) {
                 shoesSizes += `<option>${i}</option>`
             }
             let apparelSizes = `
-                            <option disabled selected value> -- size -- </option>
-                            <option value> XS </option>
-                            <option value> S </option>
-                            <option value> M </option>
-                            <option value> L </option>
-                            <option value> XL </option>
-                            <option value> XXL </option>
-                            `;
+                                        <option disabled selected value> -- size -- </option>
+                                        <option > XS </option>
+                                        <option > S </option>
+                                        <option > M </option>
+                                        <option > L </option>
+                                        <option > XL </option>
+                                        <option > XXL </option>
+                                        `;
 
 
             $('.sizes').html(shoesSizes);
 
+
             $('input[type=radio][name=product__type]').change(function() {
                 updateSizes(this.value);
+                updateCategories(this.value);
             });
 
             function updateSizes(type) {
@@ -126,6 +136,14 @@
                     $('.sizes').html(shoesSizes);
                 } else if (type == "apparel") {
                     $('.sizes').html(apparelSizes);
+                }
+            }
+
+            function updateCategories(type) {
+                if (type == "shoes") {
+                    $('.categories').html(shoesCategories);
+                } else if (type == "apparel") {
+                    $('.categories').html(apparelsCategory);
                 }
             }
 
@@ -142,32 +160,34 @@
             addVariationButton.click(() => {
                 let removeVariationButton =
                     `
-                                                                                                                                    <span  class="remove__variation row">
-                                                                                                                                        <div class="form-group col-2">
-                                                                                                                                            <label for="size">Size</label>
-                                                                                                                                            <select required class="form-control sizes" name="size[]">
-                                                                                                                                                <option disabled selected value> -- size -- </option>
-                                                                                                                                            </select>
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group col-3">
-                                                                                                                                            <label for="quantity">quantity</label>
-                                                                                                                                            <input required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
-                                                                                                                                                id="quantity">
-                                                                                                                                        </div>
-                                                                                                                                        <div class="form-group col-1 d-flex align-items-end" >
-                                                                                                                                            <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
-                                                                                                                                                xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
-                                                                                                                                                class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
-                                                                                                                                                <path
-                                                                                                                                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                                                                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                                                                                                                            </svg>
-                                                                                                                                        </div>
-                                                                                                                                    </span>
-                                                                                                                                    `
+                                                                                                                                                <span  class="remove__variation row">
+                                                                                                                                                    <div class="form-group col-2">
+                                                                                                                                                        <label for="size">Size</label>
+                                                                                                                                                        <select required class="form-control sizes" name="size[]">
+                                                                                                                                                            <option disabled selected value> -- size -- </option>
+                                                                                                                                                        </select>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="form-group col-3">
+                                                                                                                                                        <label for="quantity">quantity</label>
+                                                                                                                                                        <input required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
+                                                                                                                                                            id="quantity">
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="form-group col-1 d-flex align-items-end" >
+                                                                                                                                                        <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
+                                                                                                                                                            xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
+                                                                                                                                                            class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
+                                                                                                                                                            <path
+                                                                                                                                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                                                                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                                                                                                                                        </svg>
+                                                                                                                                                    </div>
+                                                                                                                                                </span>
+                                                                                                                                                `
                 $('#variationsContainer').append(removeVariationButton);
                 const sizesType = $('input[type=radio][name=product__type]:checked').val()
                 updateSizes(sizesType)
+                updateCategories(sizesType);
+
             })
 
             $('#variationsContainer').on('click', '.remove__variation__button', function() {
