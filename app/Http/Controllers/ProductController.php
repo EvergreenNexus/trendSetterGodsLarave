@@ -119,6 +119,11 @@ class ProductController extends Controller
         return back()->with('success', 'product was created successfully');
     }
 
+    public function edit( Product $product){
+        $product_with_varations = $product->load('variations')->toArray();
+        return view('dashboard.edit-product',['product'=>$product_with_varations]);
+    }
+
     public function cacheProducts()
     {
         // maybe check if the cached version is after latest product insert ?

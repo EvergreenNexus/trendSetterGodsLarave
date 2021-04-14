@@ -26,3 +26,4 @@ Route::post('/product', [ProductController::class, 'store']);
 Route::post('/cache-products', [ProductController::class, 'cacheProducts']);
 
 Route::get('/create-product', [DashboardController::class, 'index']);
+Route::get('/edit-product/{product}', [ProductController::class,'edit']);
