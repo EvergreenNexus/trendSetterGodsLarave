@@ -15,15 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
-Route::get('/men', [ProductController::class, 'menShoes']);
-Route::get('/women', [ProductController::class, 'womenShoes']);
-Route::get('/youth', [ProductController::class, 'youthShoes']);
-Route::get('/apparel', [ProductController::class, 'apparels']);
-Route::get('/used', [ProductController::class, 'usedShoes']);
+Route::get('/', [ProductController::class, 'homepage']);
 
-Route::post('/product', [ProductController::class, 'store']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/men', [ProductController::class, 'menIndex']);
+// Route::get('/women', [ProductController::class, 'womenIndex']);
+// Route::get('/youth', [ProductController::class, 'youthIndex']);
+// Route::get('/apparel', [ProductController::class, 'apparelIndex']);
+// Route::get('/used', [ProductController::class, 'usedIndex']);
+
+Route::get('/products/create', [ProductController::class, 'create']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::get('/products/{product}', [ProductController::class,'edit']);
+Route::post('/products/{product}', [ProductController::class,'update'])->name('updateProduct');
+
 Route::post('/cache-products', [ProductController::class, 'cacheProducts']);
 
-Route::get('/create-product', [DashboardController::class, 'index']);
-Route::get('/edit-product/{product}', [ProductController::class,'edit']);
+

@@ -3,13 +3,14 @@
     <div class="card">
         <div class="card-body ">
             <h3>update</h3>
-            <form class="form" action="{{ url('/product') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ url('/products') }}/{{ $product['id'] }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row ">
                     <span class="col-5">
                         <label for="name">Product Name</label>
-                        <input disabled value="{{ $product['name'] }}" placeholder="Enter product name ..." type="text"
-                            name="name" class="form-control" id="name">
+                        <input value="{{ $product['name'] }}" placeholder="Enter product name ..." type="text" name="name"
+                            class="form-control" id="name">
                     </span>
                 </div>
                 <div class="form-group row">
@@ -31,8 +32,8 @@
                     <span class="add_variation row">
                         <div class="form-group col-2">
                             <label for="size">Size</label>
-                            <select disabled required class="form-control" name="size[]" id="size">
-                                <option disabled selected value> {{ $product['size'] }} </option>
+                            <select required class="form-control" name="size[]" id="size">
+                                <option selected>{{ $product['size'] }}</option>
                             </select>
                         </div>
                         <div class="form-group col-3">
@@ -52,12 +53,13 @@
                         </div>
                     </span>
                     @isset($product['variations'])
-                        @foreach ($product['variations'] as $variation)
+                        @foreach ($product['variations'] as $index => $variation)
                             <span class="remove__variation row">
+                                <input type="hidden" name="variation_ids[]" value="{{ $variation['id'] }}">
                                 <div class="form-group col-2">
                                     <label for="size">Size</label>
-                                    <select disabled required class="form-control" name="size[]" id="size">
-                                        <option disabled selected value> {{ $variation['size'] }} </option>
+                                    <select required class="form-control" name="size[]" id="size">
+                                        <option selected> {{ $variation['size'] }} </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-3">
@@ -108,24 +110,24 @@
                 shoesSizes += `<option>${i}</option>`
             }
             let apparelSizes = `
-                                                                <option disabled selected value> -- size -- </option>
-                                                                <option > XS </option>
-                                                                <option > S </option>
-                                                                <option > M </option>
-                                                                <option > L </option>
-                                                                <option > XL </option>
-                                                                <option > XXL </option>
-                                                                `;
+                                                                                <option disabled selected value> -- size -- </option>
+                                                                                <option > XS </option>
+                                                                                <option > S </option>
+                                                                                <option > M </option>
+                                                                                <option > L </option>
+                                                                                <option > XL </option>
+                                                                                <option > XXL </option>
+                                                                                `;
 
 
             // Categories
             let shoesCategories = `
-                                    <option disabled selected value> -- Select a Category -- </option>
-                                    <option >men</option>
-                                    <option >women</option>
-                                    <option >youth</option>
-                                    <option >used</option>
-                                                                    `;
+                                                    <option disabled selected value> -- Select a Category -- </option>
+                                                    <option >men</option>
+                                                    <option >women</option>
+                                                    <option >youth</option>
+                                                    <option >used</option>
+                                                                                    `;
 
             let apparelsCategory = `<option >apparel</option>`;
 
@@ -149,7 +151,7 @@
 
             function updateInputs(product) {
                 if (product['category'] == "men" || product['category'] == "women" ||
-                    product['category'] == "youth" || product['category'] == "used" ) {
+                    product['category'] == "youth" || product['category'] == "used") {
                     updateSizes("shoes");
                     updateCategories("shoes")
                 } else if (product['category'] == "apparel") {
@@ -172,29 +174,29 @@
             addVariationButton.click(() => {
                 let variationHTML =
                     `
-                                                                                                                                                                                        <span  class="remove__variation row">
-                                                                                                                                                                                            <div class="form-group col-2">
-                                                                                                                                                                                                <label for="size">Size</label>
-                                                                                                                                                                                                <select required class="form-control sizes" name="size[]">
-                                                                                                                                                                                                    <option disabled selected value> -- size -- </option>
-                                                                                                                                                                                                </select>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="form-group col-3">
-                                                                                                                                                                                                <label for="quantity">quantity</label>
-                                                                                                                                                                                                <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
-                                                                                                                                                                                                    id="quantity">
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="form-group col-1 d-flex align-items-end" >
-                                                                                                                                                                                                <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
-                                                                                                                                                                                                    xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
-                                                                                                                                                                                                    class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
-                                                                                                                                                                                                    <path
-                                                                                                                                                                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                                                                                                                                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                                                                                                                                                                                </svg>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                        </span>
-                                                                                                                                                                                        `
+                                                                                                                                                                                                        <span  class="remove__variation row">
+                                                                                                                                                                                                            <div class="form-group col-2">
+                                                                                                                                                                                                                <label for="size">Size</label>
+                                                                                                                                                                                                                <select required class="form-control sizes" name="size[]">
+                                                                                                                                                                                                                    <option disabled selected value> -- size -- </option>
+                                                                                                                                                                                                                </select>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div class="form-group col-3">
+                                                                                                                                                                                                                <label for="quantity">quantity</label>
+                                                                                                                                                                                                                <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
+                                                                                                                                                                                                                    id="quantity">
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div class="form-group col-1 d-flex align-items-end" >
+                                                                                                                                                                                                                <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
+                                                                                                                                                                                                                    xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
+                                                                                                                                                                                                                    class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
+                                                                                                                                                                                                                    <path
+                                                                                                                                                                                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                                                                                                                                                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                                                                                                                                                                                                </svg>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        </span>
+                                                                                                                                                                                                        `
                 $('#variationsContainer').append(variationHTML);
 
                 updateInputs(product);
@@ -202,6 +204,8 @@
 
             $('#variationsContainer').on('click', '.remove__variation__button', function() {
                 $(this.closest('.remove__variation')).remove();
+                // update name of
+                console.log($(".remove__variation :input"))
             })
 
 
