@@ -12,8 +12,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    //     $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
+    //     $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
+    //     $apparel_products = Product::where('category', 'apparel')->get()->load('variations')->toArray();
+    //     $used_products = Product::where('category', 'used')->get()->load('variations')->toArray();
 
     // Index pages for men , women , youth , used , apparel 
+    public function menIndex()
+    {
+        $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
+
+        return view('dashboard.men-products', ['men_products' => $men_products]);
+    }
 
     public function homepage()
     {
@@ -255,7 +265,19 @@ class ProductController extends Controller
         }
 
         // $product_with_varations = $product->load('variations')->toArray();
-        return view('dashboard.index')->with('success', 'product was updated successfully');
+        return redirect('/dashboard')->with('success', 'product was updated successfully');
+        // return view('dashboard.index')->with('success', 'product was updated successfully');
+    }
+
+    public function destroy(Product $product)
+    {
+        try {
+            $product->delete();
+        } catch (\Throwable $th) {
+            return back()->with('failure', 'unable to delete product, please try again');
+        }
+
+        return back()->with('success', 'product was deleted successfully');
     }
 
     public function cacheProducts()

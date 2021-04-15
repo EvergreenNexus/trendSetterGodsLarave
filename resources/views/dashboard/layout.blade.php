@@ -19,12 +19,16 @@
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
     </script>
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+
 
 
 </head>
 
 <body>
+    @include('dashboard.product-errors')
+
     <header class="header bg-light">
         <img class="brand" src="{{ asset('storage/images/logos/TSG_fulllogo_noborder.png') }}" />
     </header>
@@ -32,40 +36,40 @@
     <main class="container-fluid w-100 main d-flex justify-content-between align-items-stretch px-0 ">
         <aside class=" aside bg-dark  text-white ">
             <span class="pb-2 inner-aside">
-            <ul class="nav flex-column text-center">
-                <h3 class="">TrendSetterGods</h3>
-                <hr class="bg-light" />
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Men Shoes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Women Shoes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Youth Shoes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Apparel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Used</a>
-                </li>
-            </ul>
-            <ul class="nav flex-column">
-                <li class="my-2">
-                    <a class="btn btn-primary btn-block" href="#" role="button">create product</a>
-                </li>
-                <li class="my-2">
-                    <form role="form" method="POST" action="{{ url('/cache-products') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-block">update website</button>
-                    </form>
-                </li>
-            </ul>
-            <ul class="nav flex-column ">
-                <a class="btn btn-danger btn-block" href="#" role="button">logout</a>
-            </ul>
-        </span>
+                <ul class="nav flex-column text-center">
+                    <h3 class="">TrendSetterGods</h3>
+                    <hr class="bg-light" />
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/men">Men Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/women">Women Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/youth">Youth Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/apparel">Apparel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/used">Used</a>
+                    </li>
+                </ul>
+                <ul class="nav flex-column">
+                    <li class="my-2">
+                        <a class="btn btn-primary btn-block" href="#" role="button">create product</a>
+                    </li>
+                    <li class="my-2">
+                        <form role="form" method="POST" action="{{ url('/cache-products') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary btn-block">update website</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="nav flex-column ">
+                    <a class="btn btn-danger btn-block" href="#" role="button">logout</a>
+                </ul>
+            </span>
 
         </aside>
         <div class="mt-3 content ">
@@ -73,5 +77,20 @@
         </div>
     </main>
 </body>
+
+<script>
+    $('.toast').toast('show');
+
+    $('.toast').on('shown.bs.toast', function() {
+        setTimeout(() => {
+            $('.toast').toast('hide');
+        }, 4000);
+    })
+
+    $('.clear').click(function(e) {
+        $('.form').trigger('reset');
+    })
+
+</script>
 
 </html>

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductController::class, 'homepage']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
-// Route::get('/men', [ProductController::class, 'menIndex']);
+Route::get('/men', [ProductController::class, 'menIndex']);
 // Route::get('/women', [ProductController::class, 'womenIndex']);
 // Route::get('/youth', [ProductController::class, 'youthIndex']);
 // Route::get('/apparel', [ProductController::class, 'apparelIndex']);
@@ -28,6 +28,8 @@ Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::get('/products/{product}', [ProductController::class,'edit']);
 Route::post('/products/{product}', [ProductController::class,'update'])->name('updateProduct');
+Route::delete('/products/{product}', [ProductController::class,'destroy'])->name('updateProduct');
+
 
 Route::post('/cache-products', [ProductController::class, 'cacheProducts']);
 

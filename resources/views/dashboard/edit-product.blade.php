@@ -86,7 +86,7 @@
 
     </div>
 
-    @include('dashboard.create-product-errors')
+    @include('dashboard.product-errors')
 
     <script>
         $(document).ready(function() {
