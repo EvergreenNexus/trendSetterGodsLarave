@@ -43,3 +43,7 @@ ul {
     font-size: 1em;
 }
 
+
+.product-card {
+    border: solid 1px;
+  }

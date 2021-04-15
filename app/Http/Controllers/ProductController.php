@@ -12,17 +12,41 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    //     $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
-    //     $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
-    //     $apparel_products = Product::where('category', 'apparel')->get()->load('variations')->toArray();
-    //     $used_products = Product::where('category', 'used')->get()->load('variations')->toArray();
 
-    // Index pages for men , women , youth , used , apparel 
     public function menIndex()
     {
         $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
 
         return view('dashboard.men-products', ['men_products' => $men_products]);
+    }
+
+    public function womenIndex()
+    {
+        $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
+        return view('dashboard.women-products', ['women_products' => $women_products]);
+    }
+
+
+    public function youthIndex()
+    {
+        $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
+
+        return view('dashboard.youth-products', ['youth_products' => $youth_products]);
+    }
+
+
+    public function apparelIndex()
+    {
+        $apparel_products = Product::where('category', 'apparel')->get()->load('variations')->toArray();
+
+        return view('dashboard.apparel-products', ['apparel_products' => $apparel_products]);
+    }
+
+    public function usedIndex()
+    {
+        $used_products = Product::where('category', 'used')->get()->load('variations')->toArray();
+
+        return view('dashboard.used-products', ['used_products' => $used_products]);
     }
 
     public function homepage()
@@ -75,6 +99,7 @@ class ProductController extends Controller
 
 
         $product = new Product;
+        $category = $request->category;
         $sizes = $request->size;
         $quantities = $request->quantity;
         $product_variations = array();
@@ -106,7 +131,7 @@ class ProductController extends Controller
             && (sizeof($variations_sizes) == sizeof($variations_quantities))
         ) {
             DB::commit();
-            return back()->with('success', 'product was created successfully');
+            return redirect('/' . $category)->with('success', 'product was created successfully');
         }
 
         if (sizeof($variations_sizes) != sizeof($variations_quantities)) {
@@ -133,7 +158,7 @@ class ProductController extends Controller
             return back()->with('failure', 'error while creating a product');
         }
 
-        return back()->with('success', 'product was created successfully');
+        return redirect('/' . $category)->with('success', 'product was created successfully');
     }
 
     public function edit(Product $product)
@@ -145,7 +170,6 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
-        // $updatedProduct = $request->all();
         $request->validate([
             'name' => 'bail|required',
             'price' => 'required',
@@ -154,10 +178,12 @@ class ProductController extends Controller
             'quantity.*' => 'integer'
         ]);
 
+        $category = $product->category;
+
+
         $product->name = $request->name;
         $product->price = $request->price;
         $product->quantity = $request->quantity[0];
-
         $sizes = $request->size;
         $quantities = $request->quantity;
         $product_variations = array();
@@ -208,7 +234,7 @@ class ProductController extends Controller
             && (sizeof($variations_sizes) == sizeof($variations_quantities))
         ) {
             DB::commit();
-            return back()->with('success', 'product eeeewas updated successfully');
+            return redirect('/' . $category)->with('success', 'product updated successfully');
         }
 
 
@@ -251,7 +277,7 @@ class ProductController extends Controller
 
         if (sizeof($product_variations) == 0) {
             DB::commit();
-            return back()->with('success', 'product was updated successfully');
+            return redirect('/' . $category)->with('success', 'product was updated successfully');
         }
 
         try {
@@ -264,20 +290,19 @@ class ProductController extends Controller
             return back()->with('failure', 'error while creating a product 4');
         }
 
-        // $product_with_varations = $product->load('variations')->toArray();
-        return redirect('/dashboard')->with('success', 'product was updated successfully');
-        // return view('dashboard.index')->with('success', 'product was updated successfully');
+        return redirect('/' . $category)->with('success', 'product was updated successfully');
     }
 
     public function destroy(Product $product)
     {
+        $category = $product->category;
         try {
             $product->delete();
         } catch (\Throwable $th) {
             return back()->with('failure', 'unable to delete product, please try again');
         }
 
-        return back()->with('success', 'product was deleted successfully');
+        return redirect('/' . $category)->with('success', 'product was deleted successfully');
     }
 
     public function cacheProducts()

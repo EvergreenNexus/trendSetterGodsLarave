@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body ">
             <h3>Create New Product</h3>
-            <form class="form" action="{{ url('/product') }}" method="POST" enctype="multipart/form-data">
+            <form class="form" action="{{ url('/products') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="container form-group row">
                     <div class="form-check col-2">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group col-3">
                             <label for="quantity">Quantity</label>
-                            <input required type="number" placeholder="product quantity..." name="quantity[]"
+                            <input min="0" required type="number" placeholder="product quantity..." name="quantity[]"
                                 class="form-control" id="quantity">
                         </div>
                         <div class="form-group col-1 d-flex align-items-end" id="button__container">
@@ -77,17 +77,16 @@
 
     </div>
 
-    @include('dashboard.create-product-errors')
 
     <script>
         $(document).ready(function() {
-            $('.toast').toast('show');
+            // $('.toast').toast('show');
 
-            $('.toast').on('shown.bs.toast', function() {
-                setTimeout(() => {
-                    $('.toast').toast('hide');
-                }, 4000);
-            })
+            // $('.toast').on('shown.bs.toast', function() {
+            //     setTimeout(() => {
+            //         $('.toast').toast('hide');
+            //     }, 4000);
+            // })
 
             $('.clear').click(function(e) {
                 $('.form').trigger('reset');
@@ -158,32 +157,32 @@
 
             // Add More variations ( size and quantity inputs)
             addVariationButton.click(() => {
-                let removeVariationButton =
-                    `
-                                                                                                                                                <span  class="remove__variation row">
-                                                                                                                                                    <div class="form-group col-2">
-                                                                                                                                                        <label for="size">Size</label>
-                                                                                                                                                        <select required class="form-control sizes" name="size[]">
-                                                                                                                                                            <option disabled selected value> -- size -- </option>
-                                                                                                                                                        </select>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="form-group col-3">
-                                                                                                                                                        <label for="quantity">quantity</label>
-                                                                                                                                                        <input required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
-                                                                                                                                                            id="quantity">
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="form-group col-1 d-flex align-items-end" >
-                                                                                                                                                        <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
-                                                                                                                                                            xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
-                                                                                                                                                            class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
-                                                                                                                                                            <path
-                                                                                                                                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                                                                                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                                                                                                                                        </svg>
-                                                                                                                                                    </div>
-                                                                                                                                                </span>
-                                                                                                                                                `
-                $('#variationsContainer').append(removeVariationButton);
+                let variationHTML =
+            `
+                <span  class="remove__variation row">
+                    <div class="form-group col-2">
+                        <label for="size">Size</label>
+                        <select required class="form-control sizes" name="size[]">
+                            <option disabled selected value> -- size -- </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="quantity">quantity</label>
+                        <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
+                            id="quantity">
+                    </div>
+                    <div class="form-group col-1 d-flex align-items-end" >
+                        <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
+                            xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
+                            class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
+                            <path
+                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                        </svg>
+                    </div>
+                </span>
+            `
+                $('#variationsContainer').append(variationHTML);
                 const sizesType = $('input[type=radio][name=product__type]:checked').val()
                 updateSizes(sizesType)
                 updateCategories(sizesType);

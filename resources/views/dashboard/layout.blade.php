@@ -30,7 +30,7 @@
     @include('dashboard.product-errors')
 
     <header class="header bg-light">
-        <img class="brand" src="{{ asset('storage/images/logos/TSG_fulllogo_noborder.png') }}" />
+        <a href="/"> <img class="brand" src="{{ asset('storage/images/logos/TSG_fulllogo_noborder.png') }}" /></a>
     </header>
 
     <main class="container-fluid w-100 main d-flex justify-content-between align-items-stretch px-0 ">
@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="nav flex-column">
                     <li class="my-2">
-                        <a class="btn btn-primary btn-block" href="#" role="button">create product</a>
+                        <a class="btn btn-primary btn-block" href="{{ url('/products/create') }}" role="button">create product</a>
                     </li>
                     <li class="my-2">
                         <form role="form" method="POST" action="{{ url('/cache-products') }}">
@@ -79,18 +79,15 @@
 </body>
 
 <script>
-    $('.toast').toast('show');
+ $(document).ready(function() {
+            $('.toast').toast('show');
 
-    $('.toast').on('shown.bs.toast', function() {
-        setTimeout(() => {
-            $('.toast').toast('hide');
-        }, 4000);
-    })
-
-    $('.clear').click(function(e) {
-        $('.form').trigger('reset');
-    })
-
+            $('.toast').on('shown.bs.toast', function() {
+                setTimeout(() => {
+                    $('.toast').toast('hide');
+                }, 4000);
+            })
+ })
 </script>
 
 </html>

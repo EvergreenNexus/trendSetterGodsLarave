@@ -1,4 +1,4 @@
-<div class="products-womens" data-order="2">
+<div class="products-womens" >
 
     @foreach ($women_products as $product)
         @php
@@ -8,6 +8,8 @@
             }
         @endphp
         <div class="womens product-card">
+            @include('dashboard.sections.product-actions')
+            
             <div class="product-image"><img src="{{ asset($product['image']) }}"></div>
 
             <div class="product-info">

@@ -193,16 +193,10 @@ html, body{
     display: flex;
     flex-wrap: wrap;
   }
-
-img{
-  max-width: 200px;
-}
-
   .product-card {
     padding: 2%;
-    /* flex-grow: 1; */
-    /* flex-basis: 16%; */
-    flex-basis: 200px;
+    flex-grow: 1;
+    flex-basis: 16%;
     flex-direction: column;
     text-align: center;
   

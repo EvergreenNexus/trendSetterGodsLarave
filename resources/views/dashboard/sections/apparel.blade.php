@@ -1,5 +1,4 @@
-<div class="products-apparel" data-order="4">
-
+<div class="products-apparel">
     @foreach ($apparel_products as $product)
         @php
             $variations = null;
@@ -8,6 +7,7 @@
             }
         @endphp
         <div class="apparel product-card" id="apparel">
+            @include('dashboard.sections.product-actions')
             <div class="product-image"><img src="{{ asset($product['image']) }}"></div>
 
             <div class="product-info">

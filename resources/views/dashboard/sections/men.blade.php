@@ -7,14 +7,7 @@
             }
         @endphp
         <div class="mens product-card">
-            <div class="d-flex justify-content-between">
-                <a class="btn btn-primary btn-sm" href="{{url('/products')}}/{{$product['id']}}" role="button">edit</a>
-                <form action="{{url('/products')}}/{{$product['id']}}" method="post">
-                    @csrf
-                    @method("delete")
-                    <button type="submit" class="btn btn-danger btn-sm">delete</button>
-                </form>
-            </div>
+            @include('dashboard.sections.product-actions')
             <div class="product-image"><img src="{{ asset($product['image']) }}"></div>
 
             <div class="product-info">

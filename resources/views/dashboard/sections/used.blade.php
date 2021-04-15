@@ -8,6 +8,7 @@
             }
         @endphp
         <div class="used product-card" id="used">
+            @include('dashboard.sections.product-actions')
             <div class="product-image"><img src="{{ asset($product['image']) }}"></div>
 
             <div class="product-info">

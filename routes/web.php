@@ -19,10 +19,10 @@ Route::get('/', [ProductController::class, 'homepage']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/men', [ProductController::class, 'menIndex']);
-// Route::get('/women', [ProductController::class, 'womenIndex']);
-// Route::get('/youth', [ProductController::class, 'youthIndex']);
-// Route::get('/apparel', [ProductController::class, 'apparelIndex']);
-// Route::get('/used', [ProductController::class, 'usedIndex']);
+Route::get('/women', [ProductController::class, 'womenIndex']);
+Route::get('/youth', [ProductController::class, 'youthIndex']);
+Route::get('/apparel', [ProductController::class, 'apparelIndex']);
+Route::get('/used', [ProductController::class, 'usedIndex']);
 
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store']);

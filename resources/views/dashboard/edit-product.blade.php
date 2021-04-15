@@ -86,18 +86,18 @@
 
     </div>
 
-    @include('dashboard.product-errors')
+    {{-- @include('dashboard.product-errors') --}}
 
     <script>
         $(document).ready(function() {
 
-            $('.toast').toast('show');
+            // $('.toast').toast('show');
 
-            $('.toast').on('shown.bs.toast', function() {
-                setTimeout(() => {
-                    $('.toast').toast('hide');
-                }, 4000);
-            })
+            // $('.toast').on('shown.bs.toast', function() {
+            //     setTimeout(() => {
+            //         $('.toast').toast('hide');
+            //     }, 4000);
+            // })
 
             $('.clear').click(function(e) {
                 $('.form').trigger('reset');
