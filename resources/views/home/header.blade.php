@@ -48,7 +48,7 @@
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
-                        <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
+                        <a href="https://www.instagram.com/trendsettergods253/" target="_blank"><img id="social"
                                 src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
-                        <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
+                        <a href="https://www.instagram.com/trendsettergods253/" target="_blank"><img id="social"
                                 src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
     <div id="top"></div>
 
 
-    {{-- <audio style="margin: 0 auto; display: block;" id="bgmusic" src="{{asset('music/Mike-Deez-Got-Swag.mp3')}}" controls=""
+    <audio style="margin: 0 auto; display: block;" id="bgmusic" src="{{asset('/music/Mike Deez - Got Swag.mp3')}}" controls=""
         autoplay="" loop="loop">
-    </audio> --}}
+    </audio>
 </header>

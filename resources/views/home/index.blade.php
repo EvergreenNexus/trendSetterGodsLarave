@@ -105,6 +105,23 @@
             </div>
         </div>
     @endif
+    @if (session('unauthorized'))
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+            <div class="toast-header text-white bg-danger">
+                <strong class="mr-auto">unauthorized!</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <small>1 sec ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                <p>you cant signup please contact Patrick.</p>
+            </div>
+        </div>
+    @endif
 
     @if (session('email_failure'))
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
