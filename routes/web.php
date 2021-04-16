@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactByMail;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +33,8 @@ Route::delete('/products/{product}', [ProductController::class,'destroy'])->name
 
 
 Route::post('/cache-products', [ProductController::class, 'cacheProducts']);
+
+Route::post('/send', [ContactByMail::class, 'sendMail']);
+
 
 

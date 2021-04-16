@@ -19,7 +19,7 @@
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
@@ -27,5 +27,17 @@
     @include('home.header')
     @yield('content')
 </body>
+<script>
+    $(document).ready(function() {
+        $('.toast').toast('show');
+
+        $('.toast').on('shown.bs.toast', function() {
+            setTimeout(() => {
+                $('.toast').toast('hide');
+            }, 4000);
+        })
+    })
+
+</script>
 
 </html>

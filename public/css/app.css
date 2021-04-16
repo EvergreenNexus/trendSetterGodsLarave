@@ -280,3 +280,9 @@ html, body{
   .modal {
     transform: translateY(25%);
   }
+
+  .toast {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

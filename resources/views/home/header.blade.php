@@ -71,7 +71,7 @@
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
-                        <a href="https://www.instagram.com/trendsettergods2020/" target="_blank"><img id="social"
+                        <a href="https://www.instagram.com/trendsettergods253/" target="_blank"><img id="social"
                                 src="{{asset('storage/images/logos/instagramsml.png')}}"></a>
                     </div>
                 </div>
