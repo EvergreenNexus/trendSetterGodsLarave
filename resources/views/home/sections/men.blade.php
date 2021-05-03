@@ -17,7 +17,9 @@
                 @endif
                 @if (isset($variations))
                     @foreach ($variations as $variation)
-                        <h6>Size {{ $variation['size'] }} / {{ $variation['quantity'] }} Available</h6>
+                        @if ($variation['quantity'] != 0)
+                            <h6>Size {{ $variation['size'] }} / {{ $variation['quantity'] }} Available</h6>
+                        @endif
                     @endforeach
                 @endif
                 <h6>{{ $product['price'] }}</h6>

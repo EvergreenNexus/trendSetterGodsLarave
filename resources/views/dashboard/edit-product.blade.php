@@ -109,15 +109,16 @@
             for (let i = 1; i < 16.5; i += (1 / 2)) {
                 shoesSizes += `<option>${i}</option>`
             }
+            
             let apparelSizes = `
-                                                                                <option disabled selected value> -- size -- </option>
-                                                                                <option > XS </option>
-                                                                                <option > S </option>
-                                                                                <option > M </option>
-                                                                                <option > L </option>
-                                                                                <option > XL </option>
-                                                                                <option > XXL </option>
-                                                                                `;
+                                        <option disabled selected value> -- size -- </option>
+                                        <option > X-SMALL </option>
+                                        <option > SMALL </option>
+                                        <option > MEDIUM </option>
+                                        <option > LARGE </option>
+                                        <option > X-LARGE </option>
+                                        <option > XX-LARGE </option>
+                                        `;
 
 
             // Categories
