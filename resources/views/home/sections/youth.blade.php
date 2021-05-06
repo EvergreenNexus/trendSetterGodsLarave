@@ -13,12 +13,18 @@
             <div class="product-info">
                 <h5>{{ $product['name'] }}</h5>
                 @if ($product['quantity'] != 0)
-                    <h6>Size {{ $product['size'] }} / {{ $product['quantity'] }} Available</h6>
+                    @if ($product['size'] != null)
+                        <h6>Size {{ $product['size'] }} /
+                    @endif {{ $product['quantity'] }} Available</h6>
                 @endif
                 @if (isset($variations))
                     @foreach ($variations as $variation)
                         @if ($variation['quantity'] != 0)
-                            <h6>Size {{ $variation['size'] }} / {{ $variation['quantity'] }} Available</h6>
+
+                            @if ($variation['size'] != null)
+                                <h6>Size {{ $variation['size'] }} /
+                            @endif
+                            {{ $variation['quantity'] }} Available</h6>
                         @endif
                     @endforeach
                 @endif

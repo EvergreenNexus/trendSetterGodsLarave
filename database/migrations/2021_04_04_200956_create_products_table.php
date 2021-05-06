@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
-            $table->string('size');
+            $table->string('size')->nullable();
             $table->enum('category',['men','women','youth','apparel','used']);
             $table->integer('quantity');
             $table->string('image');

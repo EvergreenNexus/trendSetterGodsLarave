@@ -48,3 +48,7 @@ ul {
 .product-card {
     border: solid 1px;
   }
+
+.hidden {
+    display: none;
+}

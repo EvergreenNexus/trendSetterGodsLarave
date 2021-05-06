@@ -45,7 +45,7 @@
                     <span class="add_variation row">
                         <div class="form-group col-2">
                             <label for="size">Size</label>
-                            <select required class="form-control sizes" name="size[]">
+                            <select  class="form-control sizes" name="size[]">
                                 <option disabled selected value> -- size -- </option>
                             </select>
                         </div>
@@ -54,7 +54,7 @@
                             <input min="0" required type="number" placeholder="product quantity..." name="quantity[]"
                                 class="form-control" id="quantity">
                         </div>
-                        <div class="form-group col-1 d-flex align-items-end" id="button__container">
+                        <div class="form-group col-1 d-flex align-items-end " id="button__container">
                             <svg data-toggle="tooltip" data-placement="top" title="Add Product Variations"
                                 xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="green"
                                 class="bi bi-plus-square add__variation" viewBox="0 0 16 16">
@@ -94,12 +94,12 @@
 
             // Categories
             let shoesCategories = `
-                                        <option disabled selected value> -- Select a Category -- </option>
-                                        <option >men</option>
-                                        <option >women</option>
-                                        <option >youth</option>
-                                        <option >used</option>
-                                        `;
+                                                        <option disabled selected value> -- Select a Category -- </option>
+                                                        <option >men</option>
+                                                        <option >women</option>
+                                                        <option >youth</option>
+                                                        <option >used</option>
+                                                        `;
 
             let apparelsCategory = `<option >apparel</option>`;
 
@@ -111,15 +111,16 @@
             for (let i = 1; i < 16.5; i += (1 / 2)) {
                 shoesSizes += `<option>${i}</option>`
             }
+
             let apparelSizes = `
-                                        <option disabled selected value> -- size -- </option>
-                                        <option > X-SMALL </option>
-                                        <option > SMALL </option>
-                                        <option > MEDIUM </option>
-                                        <option > LARGE </option>
-                                        <option > X-LARGE </option>
-                                        <option > XX-LARGE </option>
-                                        `;
+                                                        <option disabled selected value> -- size -- </option>
+                                                        <option > X-SMALL </option>
+                                                        <option > SMALL </option>
+                                                        <option > MEDIUM </option>
+                                                        <option > LARGE </option>
+                                                        <option > X-LARGE </option>
+                                                        <option > XX-LARGE </option>
+                                                        `;
 
 
             $('.sizes').html(shoesSizes);
@@ -146,6 +147,21 @@
                 }
             }
 
+            // disable sizes for kids
+            $('.categories').change(event => {
+                    const addButton = $("#button__container") 
+                if (event.target.value === "youth") {
+                    $(".sizes").prop('disabled', true);
+                    addButton.addClass("hidden")
+                    addButton.removeClass("d-flex")
+                    $(".remove__variation").remove();
+                }else {
+                    $(".sizes").prop('disabled', false);
+                    addButton.addClass("d-flex")
+                    addButton.removeClass("hidden")
+                }
+            })
+
 
             // ------------------------------
             // Variations
@@ -158,30 +174,30 @@
             // Add More variations ( size and quantity inputs)
             addVariationButton.click(() => {
                 let variationHTML =
-            `
-                <span  class="remove__variation row">
-                    <div class="form-group col-2">
-                        <label for="size">Size</label>
-                        <select required class="form-control sizes" name="size[]">
-                            <option disabled selected value> -- size -- </option>
-                        </select>
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="quantity">quantity</label>
-                        <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
-                            id="quantity">
-                    </div>
-                    <div class="form-group col-1 d-flex align-items-end" >
-                        <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
-                            xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
-                            class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
-                            <path
-                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                        </svg>
-                    </div>
-                </span>
-            `
+                    `
+                                <span  class="remove__variation row">
+                                    <div class="form-group col-2">
+                                        <label for="size">Size</label>
+                                        <select class="form-control sizes" name="size[]">
+                                            <option disabled selected value> -- size -- </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <label for="quantity">quantity</label>
+                                        <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
+                                            id="quantity">
+                                    </div>
+                                    <div class="form-group col-1 d-flex align-items-end" >
+                                        <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
+                                            xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
+                                            class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                        </svg>
+                                    </div>
+                                </span>
+                            `
                 $('#variationsContainer').append(variationHTML);
                 const sizesType = $('input[type=radio][name=product__type]:checked').val()
                 updateSizes(sizesType)
