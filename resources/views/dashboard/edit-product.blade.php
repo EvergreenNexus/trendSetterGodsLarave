@@ -7,21 +7,21 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row ">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="name">Product Name</label>
                         <input value="{{ $product['name'] }}" placeholder="Enter product name ..." type="text" name="name"
                             class="form-control" id="name">
                     </span>
                 </div>
                 <div class="form-group row">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="price">Price</label>
                         <input required placeholder="Enter product price ..." type="text" name="price" class="form-control"
                             id="price" value="{{ $product['price'] }}">
                     </span>
                 </div>
                 <div class="form-group row">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="categories">Categories</label>
                         <select disabled required name="category" class="form-control categories">
                             <option disabled selected value> {{ $product['category'] }} </option>
@@ -30,18 +30,18 @@
                 </div>
                 <div id="variationsContainer">
                     <span class="add_variation row">
-                        <div class="form-group col-2">
+                        <div class="form-group col-md-2">
                             <label for="size">Size</label>
                             <select required class="form-control sizes" name="size[]" id="">
                                 <option selected>{{ $product['size'] }}</option>
                             </select>
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-md-3">
                             <label for="quantity">Quantity</label>
                             <input min="0" value="{{ $product['quantity'] }}" required type="number"
                                 placeholder="product quantity..." name="quantity[]" class="form-control" id="quantity">
                         </div>
-                        <div class="form-group col-1 d-flex align-items-end" id="button__container">
+                        <div class="form-group col-md-1 d-flex align-items-end" id="button__container">
                             <svg data-toggle="tooltip" data-placement="top" title="Add Product Variations"
                                 xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="green"
                                 class="bi bi-plus-square add__variation" viewBox="0 0 16 16">
@@ -56,18 +56,18 @@
                         @foreach ($product['variations'] as $index => $variation)
                             <span class="remove__variation row">
                                 <input type="hidden" name="variation_ids[]" value="{{ $variation['id'] }}">
-                                <div class="form-group col-2">
+                                <div class="form-group col-md-2">
                                     <label for="size">Size</label>
                                     <select required class="form-control sizes" name="size[]" id="">
                                         <option selected> {{ $variation['size'] }} </option>
                                     </select>
                                 </div>
-                                <div class="form-group col-3">
+                                <div class="form-group col-md-3">
                                     <label for="quantity">quantity</label>
                                     <input min="0" value="{{ $variation['quantity'] }}" required name="quantity[]"
                                         placeholder="product quantity..." type="number" class="form-control" id="quantity">
                                 </div>
-                                <div class="form-group col-1 d-flex align-items-end">
+                                <div class="form-group col-md-1 d-flex align-items-end">
                                     <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
                                         xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
                                         class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">
@@ -156,18 +156,18 @@
                 let variationHTML =
                     `
                 <span  class="remove__variation row">
-                    <div class="form-group col-2">
+                    <div class="form-group col-md-2">
                         <label for="size">Size</label>
                         <select required  class="form-control sizes" name="size[]">
                             <option disabled selected value> -- size -- </option>
                         </select>
                     </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-md-3">
                         <label for="quantity">quantity</label>
                         <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
                             id="quantity">
                     </div>
-                    <div class="form-group col-1 d-flex align-items-end" >
+                    <div class="form-group col-md-1 d-flex align-items-end" >
                         <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
                             xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
                             class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">

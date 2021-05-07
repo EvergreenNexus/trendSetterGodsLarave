@@ -1,18 +1,18 @@
 @extends('dashboard.layout')
 @section('content')
     <div class="card">
-        <div class="card-body ">
+        <div class="card-body">
             <h3>Create New Product</h3>
             <form class="form" action="{{ url('/products') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="container form-group row">
-                    <div class="form-check col-2">
+                    <div class="form-check col-md-2">
                         <input class="form-check-input" type="radio" name="product__type" id="shoes" value="shoes" checked>
                         <label class="form-check-label" for="shoes">
                             Shoes
                         </label>
                     </div>
-                    <div class="form-check col-2">
+                    <div class="form-check col-md-2">
                         <input class="form-check-input" type="radio" name="product__type" id="apparel" value="apparel">
                         <label class="form-check-label" for="apparel">
                             Apparel
@@ -20,21 +20,21 @@
                     </div>
                 </div>
                 <div class="form-group row ">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="name">Product Name</label>
                         <input required placeholder="Enter product name ..." type="text" name="name" class="form-control"
                             id="name">
                     </span>
                 </div>
                 <div class="form-group row">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="price">Price</label>
                         <input required placeholder="Enter product price ..." type="text" name="price" class="form-control"
                             id="price">
                     </span>
                 </div>
                 <div class="form-group row">
-                    <span class="col-5">
+                    <span class="col-md-5">
                         <label for="categories">Categories</label>
                         <select required name="category" class="form-control categories">
                             <option disabled selected value> -- select a category -- </option>
@@ -43,18 +43,18 @@
                 </div>
                 <div id="variationsContainer">
                     <span class="add_variation row">
-                        <div class="form-group col-2">
+                        <div class="form-group col-md-2">
                             <label for="size">Size</label>
                             <select required class="form-control sizes" name="size[]">
                                 <option disabled selected value> -- size -- </option>
                             </select>
                         </div>
-                        <div class="form-group col-3">
+                        <div class="form-group col-md-3">
                             <label for="quantity">Quantity</label>
                             <input min="0" required type="number" placeholder="product quantity..." name="quantity[]"
                                 class="form-control" id="quantity">
                         </div>
-                        <div class="form-group col-1 d-flex align-items-end " id="button__container">
+                        <div class="form-group col-md-1 d-flex align-items-end " id="button__container">
                             <svg data-toggle="tooltip" data-placement="top" title="Add Product Variations"
                                 xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="green"
                                 class="bi bi-plus-square add__variation" viewBox="0 0 16 16">
@@ -188,18 +188,18 @@
                 let variationHTML =
                     `
                         <span  class="remove__variation row">
-                            <div class="form-group col-2">
+                            <div class="form-group col-md-2">
                                 <label for="size">Size</label>
                                 <select required class="form-control sizes" name="size[]">
                                     <option disabled selected value> -- size -- </option>
                                 </select>
                             </div>
-                            <div class="form-group col-3">
+                            <div class="form-group col-md-3">
                                 <label for="quantity">quantity</label>
                                 <input min="0" required name="quantity[]" placeholder="product quantity..." type="number" class="form-control"
                                     id="quantity">
                             </div>
-                            <div class="form-group col-1 d-flex align-items-end" >
+                            <div class="form-group col-md-1 d-flex align-items-end" >
                                 <svg data-toggle="tooltip" data-placement="top" title="Remove Product Variations"
                                     xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="red"
                                     class=" bi bi-dash-square remove__variation__button" viewBox="0 0 16 16">

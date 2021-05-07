@@ -2,7 +2,7 @@
 @if (session('success'))
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
         <div class="toast-header text-white bg-success">
-            <strong class="mr-auto">Website updated</strong>
+            <strong class="mr-auto">Product updated</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -13,9 +13,6 @@
         </div>
         <div class="toast-body">
             <p>{{ session('success') }}</p>
-            <p>
-                Please update website ... !
-            </p>
         </div>
     </div>
 @endif
