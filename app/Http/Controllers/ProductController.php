@@ -30,6 +30,7 @@ class ProductController extends Controller
     public function youthIndex()
     {
         $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
+
         return view('dashboard.youth-products', ['youth_products' => $youth_products]);
     }
 
@@ -91,6 +92,7 @@ class ProductController extends Controller
             'name' => 'bail|required',
             'price' => 'required',
             'category' => 'required',
+            'size' => 'required|array|min:1',
             'quantity' => 'required|array|min:1',
             'quantity.*' => 'integer'
         ]);
@@ -98,17 +100,13 @@ class ProductController extends Controller
 
         $product = new Product;
         $category = $request->category;
-        $sizes = $request->size ? $request->size : array();
+        $sizes = $request->size;
         $quantities = $request->quantity;
         $product_variations = array();
 
         $product->name = $request->name;
         $product->price = $request->price;
-        if(!empty($request->size)){
-            $product->size = $request->size[0];
-        }else {
-            $product->size = null;
-        }
+        $product->size = $request->size[0];
         $product->quantity = $request->quantity[0];
         $product->category = $request->category;
 
@@ -175,6 +173,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'bail|required',
             'price' => 'required',
+            'size' => 'required|array|min:1',
             'quantity' => 'required|array|min:1',
             'quantity.*' => 'integer'
         ]);
@@ -185,12 +184,10 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->quantity = $request->quantity[0];
-        $sizes = $request->size ? $request->size : array();
+        $sizes = $request->size;
         $quantities = $request->quantity;
         $product_variations = array();
         $variation_ids = $request->variation_ids;
-        
-
 
         array_shift($sizes);
         $variations_sizes = $sizes;
@@ -311,7 +308,6 @@ class ProductController extends Controller
     public function cacheProducts()
     {
         // maybe check if the cached version is after latest product insert ?
-
         $men_products = Product::where('category', 'men')->get()->load('variations')->toArray();
         $women_products = Product::where('category', 'women')->get()->load('variations')->toArray();
         $youth_products = Product::where('category', 'youth')->get()->load('variations')->toArray();
