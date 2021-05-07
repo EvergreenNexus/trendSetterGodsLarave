@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2021 at 04:16 PM
+-- Generation Time: May 07, 2021 at 06:15 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -24,6 +24,57 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(6, '2014_10_12_000000_create_users_table', 1),
+(7, '2014_10_12_100000_create_password_resets_table', 1),
+(8, '2019_08_19_000000_create_failed_jobs_table', 1),
+(9, '2021_04_04_200956_create_products_table', 1),
+(10, '2021_04_04_201148_create_variations_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -31,12 +82,12 @@ CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category` enum('men','women','youth','apparel','used') COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -119,7 +170,54 @@ INSERT INTO `products` (`id`, `name`, `price`, `size`, `category`, `quantity`, `
 (75, 'Nike (Womens) Air Jordan 11 (Neutral Olive/MYLC Stout-Sail)', 'Contact For Price', '12', 'women', 1, 'storage/images/WMNS Air Jordan 11 OliveMYLC StoutSail.jpg', '2021-05-04 13:18:16', '2021-05-04 13:18:16'),
 (76, 'Nike (Womens) Vapor Street (OW/Black/White/Black)\r\n', 'Contact For Price', '11', 'women', 1, 'storage/images/WS Vapor Street OWBlackWhiteBlack.jpg', '2021-05-04 13:18:16', '2021-05-04 13:18:16'),
 (77, 'Nike (Womens) Space Hippie 04 (Grey/Volt Black/DK Smoke Grey)', 'Contact For Price', '11', 'women', 1, 'storage/images/W Nike Space Hippie 04GreyVoltBlackDK Smoke Grey.jpg', '2021-05-04 13:18:16', '2021-05-04 13:18:16'),
-(78, 'Nike (Womens) Air Jordan 8 (Retro White/Hyper Blue/Black)', 'Contact For Price', '9', 'women', 1, 'storage/images/WMNS Air Jordan 8 Retro WhiteHyper BlueBlack.jpg', '2021-05-04 13:18:16', '2021-05-04 13:18:16');
+(78, 'Nike (Womens) Air Jordan 8 (Retro White/Hyper Blue/Black)', 'Contact For Price', '9', 'women', 1, 'storage/images/WMNS Air Jordan 8 Retro WhiteHyper BlueBlack.jpg', '2021-05-04 13:18:16', '2021-05-04 13:18:16'),
+(79, 'Supreme Kangol Bermuda Space Camp Cap', 'CONTACT FOR PRICE', 'LARGE', 'apparel', 1, 'storage/images/Supreme Kangol Bermuda Space Camp Cap.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(80, 'Staple X Futura BLM T-shirt', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Staple X Futura Blm T-shirt.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(81, 'Mike Tyson x Chinatown Market Tee in Black', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Mike Tyson x Chinatown Market Tee in Black.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(82, 'Chinatown Market x Mike Tyson Tee in White', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Chinatown Market x Mike Tyson Tee in White.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(83, 'Chinatown Market Mike Tyson Graphics Black Tee Shirt', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Chinatown Market Mike Tyson Graphics Black Tee Shirt.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(84, 'Supreme Smurfs Tee Black', 'CONTACT FOR PRICE', 'LARGE', 'apparel', 1, 'storage/images/Supreme Smurfs Tee Black.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(85, 'Thanks But Im Gucci Black Airbrush T-Shirt', 'CONTACT FOR PRICE', 'LARGE', 'apparel', 1, 'storage/images/Thanks But Im Gucci Black Airbrush T-Shirt.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(86, 'Supreme Sun Tee Black', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Supreme Sun Tee Black.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(87, 'Supreme Lovers Tee Woodland Camo', 'CONTACT FOR PRICE', 'X-LARGE', 'apparel', 1, 'storage/images/Supreme Lovers Tee Woodland Camo.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(88, 'Supreme Futura Logo Tee Bright Blue', 'CONTACT FOR PRICE', 'MEDIUM', 'apparel', 1, 'storage/images/Supreme Futura Logo Tee Bright Blue.jpg', '2021-05-04 19:45:09', '2021-05-04 19:45:09'),
+(92, 'adidas Ozweego Orange', 'Contact For Price', '5Y', 'youth', 1, 'storage/images/adidas-ozweego-orange-gs.jpg', NULL, NULL),
+(93, 'Nike Cortez Basic White Black (GS)', 'Contact For Price', '6.5Y', 'youth', 1, 'storage/images/Nike-Cortez-Basic-White-Black-GS.jpg', NULL, NULL),
+(94, 'Air Jordan 6 Retro GS \'CARMINE\' 2021', 'Contact For Price', '7Y', 'youth', 1, 'storage/images/air-jordan-6-retro-carmine-2020.jpg', NULL, NULL),
+(95, 'Nike Air Force 1 07\'', 'Contact For Price', '4C', 'youth', 1, 'storage/images/nike-wmns-air-force-1-07.jpeg', NULL, NULL),
+(96, 'Nike Air Jordan 3 Retro OG DK (Purple Dust/Atomic Pink)', 'Contact For Price', '7.5Y', 'youth', 1, 'storage/images/Air Jordan 3 Retro OG DK Purple DustAtomic Pink.jpg', NULL, NULL),
+(97, 'Nike Manoa LTR (GS) (Wheat/Wheat-Black)', 'Contact For Price', '5Y', 'youth', 1, 'storage/images/Nike Manoa LTR GSWheatWheatBlack.jpg', NULL, NULL),
+(98, 'Nike Air Max 90 LTR(PS) (White/Particle Grey)', 'Contact For Price', '2.5Y', 'youth', 1, 'storage/images/Nike Air Max 90 LTR PS WhiteParticle Grey.jpg', NULL, NULL),
+(99, 'Adidas Superstar (CBlack/FTWWHT/CBlack)', 'Contact For Price', '1Y', 'youth', 1, 'storage/images/Adidas Superstar CBlack FTWWHT CBlack.jpg', NULL, NULL),
+(124, 'Nike Air Max Excee (TD) (Black/LT Arctic Pink-White)', 'Contact For Price', '8C', 'youth', 1, 'storage/images/Nike Air Max Excee TD Black LT Arctic PinkWhite.jpg', NULL, NULL),
+(125, 'Nike Jordan 1 Mid SE (Black/Field Purple-White)', 'Contact For Price', '5C', 'youth', 1, 'storage/images/Jordan 1 Mid SE BlackField PurpleWhite.jpg', NULL, NULL),
+(126, 'Nike Jordan 1 Mid GT (Phantom/Gloo-Purple Rise)', 'Contact For Price', '4C', 'youth', 1, 'storage/images/Jordan 1 Mid GT PhantomGlooPurple Rise.jpg', NULL, NULL),
+(127, 'Nike Jordan 11 Crib Bootie (White/Metallic Silver)', 'Contact For Price', '4C', 'youth', 1, 'storage/images/Jordan 11 Crib Bootie WhiteMetallic Silver.jpg', NULL, NULL),
+(128, 'Nike Jordan 1 Crib Bootie (White/DK Powder Blue)', 'Contact For Price', '2C', 'youth', 1, 'storage/images/Jordan 1 Crib BootieWhiteDK Powder Blue.jpg', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$u3DnxzRgyk3FQ9AsJBREW.uPV8FL3zShniywC1tlzQ/8gl6M/.uPK', '0gI0OTNS44GoGMTGazAns4YFev9L7e50klIOj7yHwuagOyjN24esfETtHl8w', '2021-04-30 17:22:48', '2021-04-30 17:22:48');
 
 -- --------------------------------------------------------
 
@@ -129,7 +227,7 @@ INSERT INTO `products` (`id`, `name`, `price`, `size`, `category`, `quantity`, `
 
 CREATE TABLE `variations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -157,17 +255,47 @@ INSERT INTO `variations` (`id`, `size`, `quantity`, `product_id`, `created_at`, 
 (17, '9.5', 1, 56, NULL, NULL),
 (18, '7', 1, 71, NULL, NULL),
 (19, '12', 1, 72, NULL, NULL),
-(20, '11.5', 1, 77, NULL, NULL);
+(20, '11.5', 1, 77, NULL, NULL),
+(37, '7Y', 1, 92, NULL, NULL),
+(38, '6C', 1, 94, NULL, NULL),
+(39, '13C', 1, 94, NULL, NULL),
+(40, '7C', 1, 95, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- Indexes for table `variations`
@@ -181,16 +309,34 @@ ALTER TABLE `variations`
 --
 
 --
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `variations`
 --
 ALTER TABLE `variations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
