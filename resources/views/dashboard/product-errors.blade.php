@@ -23,7 +23,7 @@
 @if (session('updated'))
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
         <div class="toast-header text-white bg-success">
-            <strong class="mr-auto">Product Created</strong>
+            <strong class="mr-auto">Website is updated</strong>
             &nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
