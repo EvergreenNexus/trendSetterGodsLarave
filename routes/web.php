@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     
 });
 
-Route::post('/send', [ContactByMail::class, 'sendMail']);
+Route::post('/send', [ContactByMail::class, 'sendMail'])->name('sendEmail');
 
 
 

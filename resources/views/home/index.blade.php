@@ -36,7 +36,7 @@
                 <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
                     <div class="card ">
                         <div class="card-body">
-                            <form id="reused_form" action="{{ url('/send') }}" method="POST" enctype="multipart/form-data">
+                            <form id="reused_form" action="{{ route('sendEmail') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label>Name</label>

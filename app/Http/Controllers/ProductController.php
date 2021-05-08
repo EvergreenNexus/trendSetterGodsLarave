@@ -114,6 +114,8 @@ class ProductController extends Controller
         $path = $request->image->storeAs('/images', $imageName, 'public');
         $product->image = 'storage/' . $path;
 
+        dd($path,$product);
+
         DB::beginTransaction();
         try {
             $product->save();

@@ -14,11 +14,8 @@ class ContactByMail extends Controller
         $sender = $request->email;
         $mail = $request->message;
 
-        Mail::to($sender)->queue(new Contact($sender_name,$mail));
-        // try {
-        // } catch (\Throwable $th) {
-        //     return redirect("/")->with("email_failure","email was not sent");
-        // }
+        Mail::to("orders@trendsettergods.net")->queue(new Contact($sender_name,$mail));
+
 
         return redirect("/")->with("email_success","email was sent successfully");
     }
