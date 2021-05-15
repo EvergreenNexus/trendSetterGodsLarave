@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/dashboard.css": "/css/dashboard.css",
-    "/css/app.css": "/css/app.css",
-    "/music/Mike Deez - Got Swag.mp3": "/music/Mike Deez - Got Swag.mp3"
+    "/js/app.js": "public/js/app.js?id=17fe750a9c175e321b95",
+    "/css/dashboard.css": "public/css/dashboard.css?id=cae972a3b5dfb5bcd6d1",
+    "/css/app.css": "public/css/app.css?id=210dafdf5b973d7e2c73",
+    "/music/Mike Deez - Got Swag.mp3": "public/music/Mike Deez - Got Swag.mp3?id=86ab92e2cf4925c19728"
 }

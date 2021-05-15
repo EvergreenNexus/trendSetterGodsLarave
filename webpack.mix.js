@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .css('resources/css/dashboard.css', 'public/css')
     .copyDirectory('resources/music', 'public/music')
+    .version()
     .sourceMaps();

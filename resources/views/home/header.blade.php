@@ -104,7 +104,7 @@
     <div id="top"></div>
 
 
-    {{-- <audio style="margin: 0 auto; display: block;" id="bgmusic" src="{{asset('/music/Mike Deez - Got Swag.mp3')}}" controls=""
+    <audio style="margin: 0 auto; display: block;" id="bgmusic" src="{{asset('public/music/Mike Deez - Got Swag.mp3')}}" controls=""
         autoplay="" loop="loop">
-    </audio> --}}
+    </audio>
 </header>

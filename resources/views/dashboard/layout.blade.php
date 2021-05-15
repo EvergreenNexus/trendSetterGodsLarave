@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TrendSetterGods</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/dashboard.css') }}">
+    <script src="{{ asset('public/js/app.js') }}"></script>
 
 
 
@@ -120,7 +120,6 @@
 
 <script>
      function openNav() {
-            console.log('opened')
             document.getElementById("myNav").style.width = "100%";
         }
 
