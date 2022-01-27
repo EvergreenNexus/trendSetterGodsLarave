@@ -34,7 +34,7 @@
                 <div class="hero">
 
                     <header>
-                        <img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}">
+                        <img id="logo" src="{{asset('storage/images/logos/TSGLogoWht.png')}}">
                     </header>
 
 
@@ -44,7 +44,7 @@
                         <a class="btn" href="#mens" id="nav">Men's</a>
                         <a class="btn" href="#womens" id="nav">Women's</a>
                         <a class="btn" href="#youth" id="nav">Youth</a>
-                        <a class="btn" href="#used" id="nav">Used</a>
+                        <a class="btn" href="#used" id="nav">PreOwned</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
@@ -60,14 +60,14 @@
                 <div class="hero">
 
 
-                    <header><img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}"></header>
+                    <header><img id="logo" src="{{asset('storage/images/logos/TSGLogoWht.png')}}"></header>
                     <div>
                         <a class="btn" href="/" id="nav">Home</a>
                         <a class="btn" href="#apparel" id="nav">Apparel</a>
                         <a class="btn" href="#mens" id="nav">Men's</a>
                         <a class="btn" href="#womens" id="nav">Women's</a>
                         <a class="btn" href="#youth" id="nav">Youth</a>
-                        <a class="btn" href="#used" id="nav">Used</a>
+                        <a class="btn" href="#used" id="nav">PreOwned</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>
@@ -83,13 +83,13 @@
                 <div class="hero">
 
 
-                    <header><img id="logo" src="{{asset('storage/images/logos/TSG_fulllogo_noborder.png')}}"></header>
+                    <header><img id="logo" src="{{asset('storage/images/logos/TSGLogoWht.png')}}"></header>
                     <div> <a class="btn" href="/" id="nav">Home</a>
                         <a class="btn" href="#apparel" id="nav">Apparel</a>
                         <a class="btn" href="#mens" id="nav">Men's</a>
                         <a class="btn" href="#womens" id="nav">Women's</a>
                         <a class="btn" href="#youth" id="nav">Youth</a>
-                        <a class="btn" href="#used" id="nav">Used</a>
+                        <a class="btn" href="#used" id="nav">PreOwned</a>
 
                         <a href="https://www.facebook.com/trendsetter.jesus" target="_blank"> <img id="social"
                                 src="{{asset('storage/images/logos/facebooksml.png')}}"></a>

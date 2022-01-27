@@ -21,7 +21,7 @@
         </h4>
         @include('home.sections.apparel')
         <h4 class="alert alert-success mt-4 mb-4 text-center " role="alert">
-            Used Section
+            Pre Owned Section
         </h4>
         @include('home.sections.used')
     </div>
