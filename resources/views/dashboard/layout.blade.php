@@ -19,7 +19,7 @@
     @include('dashboard.product-errors')
 
     <header class="header bg-light">
-        <a href="/"> <img class="brand" src="{{ asset('storage/images/logos/TSG_fulllogo_noborder.png') }}" /></a>
+        <a href="/"> <img class="brand" src="{{ asset('storage/images/logos/TSGLogoWht.png') }}" /></a>
         <div style="font-size:30px;cursor:pointer" id="openMenu" onclick="openNav()">&#9776; menu</div>
     </header>
 
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="/apparel">Apparel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/used">Used</a>
+                        <a class="nav-link" href="/Pre-Owned">Pre-Owned</a>
                     </li>
                 </ul>
                 <ul class="nav flex-column">
@@ -93,7 +93,7 @@
                     <a class="nav-link" href="/apparel">Apparel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/used">Used</a>
+                    <a class="nav-link" href="/Pre-Owned">Pre-Owned</a>
                 </li>
             </ul>
             <ul class="nav flex-column">
